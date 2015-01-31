@@ -1,0 +1,26 @@
+{
+  "name": "ph-node",
+  "version": "0.0.1",
+  "description": "A Node.js client for PrintHouse's RESTful API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/printhouse/ph-node.git"
+  },
+  "keywords": [
+    "printhouse",
+    "print",
+    "api",
+    "client",
+    "restful"
+  ],
+  "author": "Francis Brito <fr.br94@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/printhouse/ph-node/issues"
+  },
+  "homepage": "https://github.com/printhouse/ph-node"
+}
