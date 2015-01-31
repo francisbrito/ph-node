@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/printhouse/ph-node/issues"
   },
-  "homepage": "https://github.com/printhouse/ph-node"
+  "homepage": "https://github.com/printhouse/ph-node",
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
 }
