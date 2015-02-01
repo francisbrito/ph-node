@@ -79,4 +79,14 @@ describe('Client', function () {
         it('should throw if API endpoint responds with a server error.');
         it('should throw if an unsupported status code is returned.');
     });
+
+    describe('#updateOrder', function () {
+        it('should throw if no order with id `id` is found.');
+        it('should throw if no `id` field is provided.');
+        it('should throw if order has already being confirmed.');
+
+        it('should throw if API endpoint is not reachable.');
+        it('should throw if API endpoint responds with a server error.');
+        it('should throw if an unsupported status code is returned.');
+    });
 });
