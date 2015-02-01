@@ -7,7 +7,11 @@
  */
 'use strict';
 
-var Client = function Client() {};
+var Client = function Client(apiKey, opts) {
+    if (!apiKey) {
+        throw new Error('No API key provided.');
+    }
+};
 
 module.exports = {
     Client: Client
