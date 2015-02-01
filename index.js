@@ -32,6 +32,14 @@ var Client = function Client(apiKey, opts) {
  */
 Client.DEFAULT_API_URL = 'http://printhouse.io/api';
 
+/**
+ * Default API version.
+ * Used if no API version is passed in opts parameter when constructing a client.
+ *
+ * @type {String}
+ */
+Client.DEFAULT_API_VERSION = 1;
+
 module.exports = {
     Client: Client
 };
