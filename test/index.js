@@ -26,7 +26,11 @@ describe('Client', function () {
             client._apiUrl.should.eql(Client.DEFAULT_API_URL);
         });
 
-        it('should use latest API version if none is specified.');
+        it('should use latest API version if none is specified.', function () {
+            var client = new Client('some api key');
+
+            client._apiVersion.should.eql(Client.DEFAULT_API_VERSION);
+        });
     });
 
     describe('#getProducts', function () {
