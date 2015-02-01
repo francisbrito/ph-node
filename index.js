@@ -37,7 +37,7 @@ Client.DEFAULT_API_URL = 'http://printhouse.io/api';
  * Default API version.
  * Used if no API version is passed in opts parameter when constructing a client.
  *
- * @type {String}
+ * @type {Number}
  */
 Client.DEFAULT_API_VERSION = 1;
 
