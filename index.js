@@ -20,6 +20,14 @@ var Client = function Client(apiKey, opts) {
     }
 };
 
+/**
+ * Default API endpoint.
+ * Used if no API endpoint is passed in opts parameter when constructing a client.
+ *
+ * @type {String}
+ */
+Client.DEFAULT_API_URL = 'http://printhouse.io/api';
+
 module.exports = {
     Client: Client
 };
