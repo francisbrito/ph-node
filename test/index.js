@@ -19,6 +19,15 @@ describe('Client', function () {
 
     describe('#getProducts', function () {
         it('should filter products by `filter` parameter.');
+
+        it('should throw if API endpoint is not reachable.');
+        it('should throw if API endpoint responds with a server error.');
+        it('should throw if an unsupported status code is returned.');
+    });
+
+    describe('#getProductById', function () {
+        it('should throw if no product with id `id` is found.');
+
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
         it('should throw if an unsupported status code is returned.');
