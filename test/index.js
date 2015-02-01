@@ -27,6 +27,7 @@ describe('Client', function () {
 
     describe('#getProductById', function () {
         it('should throw if no product with id `id` is found.');
+        it('should throw if no `id` field is provided.');
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
