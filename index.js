@@ -7,4 +7,8 @@
  */
 'use strict';
 
-module.exports = {};
+var Client = function Client() {};
+
+module.exports = {
+    Client: Client
+};
