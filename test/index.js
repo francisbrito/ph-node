@@ -19,7 +19,13 @@ describe('Client', function () {
             }).should.throw('No API key provided.');
         });
 
-        it('should use default API endpoint if none is provided.');
+        it('should use default API endpoint if none is provided.', function () {
+            var client = new Client('some api key');
+
+            // NOTE: Accessing client's private API, so sort of breaking the rules here.
+            client._apiUrl.should.eql(Client.DEFAULT_API_URL);
+        });
+
         it('should use latest API version if none is specified.');
     });
 

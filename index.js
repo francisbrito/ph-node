@@ -18,6 +18,8 @@ var Client = function Client(apiKey, opts) {
     if (!apiKey) {
         throw new Error('No API key provided.');
     }
+
+    this._apiUrl = '';
 };
 
 /**
