@@ -8,11 +8,17 @@
 /* global describe, it */
 'use strict';
 
-var should = require('should');
+var should = require('should'),
+    Client = require('../').Client;
 
 describe('Client', function () {
     describe('constructor', function () {
-        it('should throw if no API key is provided.');
+        it('should throw if no API key is provided.', function () {
+            (function () {
+               var client = new Client(); 
+            }).should.throw('No API key provided.');
+        });
+
         it('should use default API endpoint if none is provided.');
         it('should use latest API version if none is specified.');
     });
