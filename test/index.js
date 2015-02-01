@@ -23,13 +23,13 @@ describe('Client', function () {
             var client = new Client('some api key');
 
             // NOTE: Accessing client's private API, so sort of breaking the rules here.
-            client._apiUrl.should.eql(Client.DEFAULT_API_URL);
+            client._endpoint.should.eql(Client.DEFAULT_API_URL);
         });
 
         it('should use latest API version if none is specified.', function () {
             var client = new Client('some api key');
 
-            client._apiVersion.should.eql(Client.DEFAULT_API_VERSION);
+            client._version.should.eql(Client.DEFAULT_API_VERSION);
         });
     });
 

@@ -21,8 +21,8 @@ var Client = function Client(apiKey, opts) {
         throw new Error('No API key provided.');
     }
 
-    this._apiUrl = opts.apiUrl || Client.DEFAULT_API_URL; 
-    this._apiVersion = opts.apiVersion || Client.DEFAULT_API_VERSION;
+    this._endpoint = opts.endpoint || Client.DEFAULT_API_URL; 
+    this._version = opts.version || Client.DEFAULT_API_VERSION;
 };
 
 /**
