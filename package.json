@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/printhouse/ph-node",
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "mocha": "^2.1.0",
+    "should": "^4.6.2"
   }
 }
