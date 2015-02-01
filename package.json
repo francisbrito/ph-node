@@ -4,7 +4,8 @@
   "description": "A Node.js client for PrintHouse's RESTful API.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "npm run lint && mocha",
+    "lint": "jshint index.js test/index.js"
   },
   "repository": {
     "type": "git",
