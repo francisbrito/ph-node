@@ -22,7 +22,7 @@ var Client = function Client(apiKey, opts) {
     }
 
     this._apiUrl = opts.apiUrl || Client.DEFAULT_API_URL; 
-    this._apiVersion = -1;
+    this._apiVersion = opts.apiVersion || Client.DEFAULT_API_VERSION;
 };
 
 /**
