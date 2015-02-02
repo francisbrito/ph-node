@@ -15,7 +15,7 @@ describe('Client', function () {
     describe('constructor', function () {
         it('should throw if no API key is provided.', function () {
             (function () {
-               var client = new Client(); 
+               var client = new Client();
             }).should.throw('No API key provided.');
         });
 
@@ -34,7 +34,19 @@ describe('Client', function () {
     });
 
     describe('#getProducts', function () {
-        it('should filter products by `filter` parameter.');
+        it('should filter products by `filter` parameter.', function (next) {
+            var filter = {
+                kind: 'canvas'
+            };
+
+            var client = new Client('some api key');
+
+            client.getProducts(filter, function (err, products) {
+                every(products, isACanvas).should.be.true();
+
+                next();
+            });
+        });
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
@@ -117,3 +129,9 @@ describe('Client', function () {
         it('should throw if an unsupported status code is returned.');
     });
 });
+
+/*
+ * Helpers
+ */
+function isACanvas(c) { return c.kind === 'canvas'; }
+function every(array, predicate) { return array.every(predicate); }
