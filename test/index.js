@@ -5,7 +5,7 @@
  * @author Francis Brito <fr.br94@gmail.com>
  * @license MIT
  */
-/* global describe, it */
+/* global describe, it, before */
 'use strict';
 
 var should = require('should'),
@@ -34,14 +34,16 @@ describe('Client', function () {
     });
 
     describe('#getProducts', function () {
+        before(function () {
+            this.client = new Client('some api key');
+        });
+
         it('should filter products by `filter` parameter.', function (next) {
             var filter = {
                 kind: 'canvas'
             };
 
-            var client = new Client('some api key');
-
-            client.getProducts(filter, function (err, products) {
+            this.client.getProducts(filter, function (err, products) {
                 every(products, isACanvas).should.be.true();
 
                 next();
