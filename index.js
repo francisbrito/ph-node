@@ -86,8 +86,16 @@ Client.prototype._request = function _request(method, collection, body, query, f
             }
         };
 
+    var client = this;
     request(opts, function (err, res, body) {
-        if (err) return fn(err);
+        if (err) {
+            // Endpoint was not reachable...
+            if (err.code === 'ENOTFOUND') {
+                err = new Error('Endpoint "' + client._endpoint + '" not reachable.');
+            }
+
+            return fn(err);
+        }
 
         // NOTE: This is a JSON API, so its safe to parse. For now.
         var parsed = JSON.parse(body);
