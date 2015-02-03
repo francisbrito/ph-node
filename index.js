@@ -7,6 +7,9 @@
  */
 'use strict';
 
+var request = require('request'),
+    querystring = require('querystring');
+
 /**
  * Client
  * Provides methods to access PrintHouse's API.
@@ -52,9 +55,59 @@ Client.DEFAULT_API_VERSION = 1;
  * @param {Function} fn     Callback.
  */
 Client.prototype.getProducts = function getProducts(filter, fn) {
-    fn(null, [{kind: ''}]);
+    this._request('get', 'products', null, filter, fn);
+};
+
+/**
+ * Client#_request
+ * Allows making HTTP requests to an API endpoint.
+ *
+ * @param {String} method       HTTP method.
+ * @param {String} collection   API collection.
+ * @param {Object} body         JSON object to posted (POST/PUT methods).
+ * @param {Object} query        URL query params.
+ * @param {Function} fn         Callback.
+ *
+ * @private
+ */
+Client.prototype._request = function _request(method, collection, body, query, fn) {
+    var url = this._getApiUrlFor(collection) + _toUrlQueryParams(query),
+        opts = {
+            url: url,
+            method: method,
+            headers: {
+                'X-API-Token': this._apiKey
+            }
+        };
+
+    request(opts, function (err, res, body) {
+        if (err) return fn(err);
+
+        // NOTE: This is a JSON API, so its safe to parse. For now.
+        var parsed = JSON.parse(body);
+
+        fn(null, parsed);
+    });
+};
+
+/**
+ * Client#_getApiUrlFor
+ * Returns an API endpoint given a collection name.
+ *
+ * @param {String} collection Name of the collection.
+ * @return {String}
+ *
+ * @private
+ */
+Client.prototype._getApiUrlFor = function _getApiUrlFor(collection) {
+    return this._endpoint + '/' + this._version + '/' + collection;
 };
 
 module.exports = {
     Client: Client
+};
+
+// Helpers
+var _toUrlQueryParams = function _toUrlQueryParams(query) {
+    return '?' + querystring.stringify(query);
 };
