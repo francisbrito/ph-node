@@ -82,7 +82,7 @@ describe('Client', function () {
 
             client.getProducts(function (err, products) {
                 err.should.be.ok;
-                err.message.should.eql('Endpoint "http://not-reachable-3001" not reachable.');
+                err.message.should.eql('Endpoint "http://not-reachable:3001" not reachable.');
 
                 next();
             });
