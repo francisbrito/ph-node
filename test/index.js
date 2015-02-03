@@ -56,6 +56,19 @@ describe('Client', function () {
         });
 
         it('should throw if API endpoint is not reachable.');
+        it('should not require `filter` parameter.', function (next) {
+            (function () {
+                // Note: try/catch is required so Mocha.js doesn't stop test execution upon receiving type error.
+                try {
+                    this.client.getProducts(function (err, products) {
+                        products.should.be.ok.and.be.an.Array;
+                        
+                        next();
+                    });
+                } catch(err) {
+                    throw err;
+                }
+            }).should.not.throw();
         it('should throw if API endpoint responds with a server error.');
         it('should throw if an unsupported status code is returned.');
     });
