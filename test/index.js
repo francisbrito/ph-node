@@ -6,6 +6,7 @@
  * @license MIT
  */
 /* global describe, it, before */
+/* jshint expr:true */
 'use strict';
 
 var should = require('should'),
@@ -48,7 +49,7 @@ describe('Client', function () {
             };
 
             this.client.getProducts(filter, function (err, products) {
-                every(products, isACanvas).should.be.true();
+                every(products, isACanvas).should.be.true;
 
                 next();
             });
