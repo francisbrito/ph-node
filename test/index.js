@@ -37,7 +37,7 @@ describe('Client', function () {
 
     describe('#getProducts', function () {
         before(function () {
-            this.client = new Client('some api key', {
+            this.client = new Client('some api token', {
                 endpoint: LOCAL_TEST_SERVER
             });
         });
