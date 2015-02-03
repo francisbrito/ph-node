@@ -55,6 +55,12 @@ Client.DEFAULT_API_VERSION = 1;
  * @param {Function} fn     Callback.
  */
 Client.prototype.getProducts = function getProducts(filter, fn) {
+    if (arguments.length === 1) {
+        fn = filter;
+
+        filter = null;
+    }
+
     this._request('get', 'products', null, filter, fn);
 };
 
