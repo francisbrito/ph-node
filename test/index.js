@@ -11,6 +11,8 @@
 var should = require('should'),
     Client = require('../').Client;
 
+var LOCAL_TEST_SERVER = 'http://localhost:3000';
+
 describe('Client', function () {
     describe('constructor', function () {
         it('should throw if no API key is provided.', function () {
@@ -35,7 +37,9 @@ describe('Client', function () {
 
     describe('#getProducts', function () {
         before(function () {
-            this.client = new Client('some api key');
+            this.client = new Client('some api key', {
+                endpoint: LOCAL_TEST_SERVER
+            });
         });
 
         it('should filter products by `filter` parameter.', function (next) {
