@@ -44,7 +44,7 @@ describe('Client', function () {
 
         it('should filter products by `filter` parameter.', function (next) {
             var filter = {
-                kind: 'canvas'
+                kind: 'Canvas'
             };
 
             this.client.getProducts(filter, function (err, products) {
@@ -139,5 +139,5 @@ describe('Client', function () {
 /*
  * Helpers
  */
-function isACanvas(c) { return c.kind === 'canvas'; }
+function isACanvas(c) { return c.kind === 'Canvas'; }
 function every(array, predicate) { return array.every(predicate); }
