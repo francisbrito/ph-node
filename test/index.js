@@ -57,10 +57,12 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should not require `filter` parameter.', function (next) {
+            var self = this;
+
             (function () {
                 // Note: try/catch is required so Mocha.js doesn't stop test execution upon receiving type error.
                 try {
-                    this.client.getProducts(function (err, products) {
+                    self.client.getProducts(function (err, products) {
                         products.should.be.ok.and.be.an.Array;
                         
                         next();
