@@ -55,7 +55,6 @@ describe('Client', function () {
             });
         });
 
-        it('should throw if API endpoint is not reachable.');
         it('should not require `filter` parameter.', function (next) {
             var self = this;
 
@@ -71,6 +70,24 @@ describe('Client', function () {
                     throw err;
                 }
             }).should.not.throw();
+        });
+
+        it('should throw if API endpoint is not reachable.', function (next) {
+            this.timeout(5 * 1000);
+
+            var client = new Client('some api token', {
+                endpoint: 'http://not-reachable:3001'
+            });
+
+
+            client.getProducts(function (err, products) {
+                err.should.be.ok;
+                err.message.should.eql('Endpoint "http://not-reachable-3001" not reachable.');
+
+                next();
+            });
+        });
+
         it('should throw if API endpoint responds with a server error.');
         it('should throw if an unsupported status code is returned.');
     });
