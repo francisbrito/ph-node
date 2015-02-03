@@ -23,6 +23,8 @@ var Client = function Client(apiKey, opts) {
 
     this._endpoint = opts.endpoint || Client.DEFAULT_API_URL;
     this._version = opts.version || Client.DEFAULT_API_VERSION;
+
+    this._apiKey = apiKey;
 };
 
 /**
