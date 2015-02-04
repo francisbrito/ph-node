@@ -9,8 +9,9 @@
 /* jshint expr:true */
 'use strict';
 
-var should = require('should'),
-    Client = require('../').Client;
+require('should');
+
+var Client = require('../').Client;
 
 var LOCAL_TEST_SERVER = 'http://localhost:3000';
 
@@ -18,7 +19,7 @@ describe('Client', function () {
     describe('constructor', function () {
         it('should throw if no API key is provided.', function () {
             (function () {
-               var client = new Client();
+               new Client();
             }).should.throw('No API key provided.');
         });
 
@@ -80,7 +81,7 @@ describe('Client', function () {
             });
 
 
-            client.getProducts(function (err, products) {
+            client.getProducts(function (err) {
                 err.should.be.ok;
                 err.message.should.eql('Endpoint "http://not-reachable:3001" not reachable.');
 
@@ -93,7 +94,7 @@ describe('Client', function () {
                 endpoint: 'http://localhost:3000/server-error'
             });
 
-            client.getProducts(function (err, products) {
+            client.getProducts(function (err) {
                 (err !== null).should.be.true;
                 err.message.should.eql('Server responded with an error.');
                 err.inner.should.eql('Cannot GET /server-error/1/products?');
