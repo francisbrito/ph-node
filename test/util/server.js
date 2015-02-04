@@ -137,12 +137,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(function (err, req, res, next) {
-    res.status(500).json({
-        err: err.message
-    });
-});
-
 app.get('/1/products',              products.find);
 app.get('/1/products/:id',          products.findById);
 
@@ -161,6 +155,16 @@ app.post('/1/orders/:id/confirm', function (req, res) {
     var order = findById(db.orders, _id);
 
     res.json(update(order, _id, {status: 'confirmed'}));
+});
+
+app.all('*', function (req, res, next) {
+    next(new Error('Cannot ' + req.method + ' ' + req.url));
+});
+
+app.use(function (err, req, res, next) {
+    res.status(500).json({
+        err: err.message
+    });
 });
 
 module.exports.app = app;
