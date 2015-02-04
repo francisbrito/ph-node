@@ -97,6 +97,15 @@ Client.prototype._request = function _request(method, collection, body, query, f
             return fn(err);
         }
 
+        if (res.statusCode >= 400) {
+            // NOTE: Error handling logic is bound to change once
+            //       the production-ready API is deployed.
+            err = new Error('Server responded with an error.');
+            err.inner = JSON.parse(body).err;
+
+            return fn(err);
+        }
+
         // NOTE: This is a JSON API, so its safe to parse. For now.
         var parsed = JSON.parse(body);
 
