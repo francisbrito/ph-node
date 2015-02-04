@@ -64,6 +64,10 @@ Client.prototype.getProducts = function getProducts(filter, fn) {
     this._request('get', 'products', null, filter, fn);
 };
 
+Client.prototype.getProductById = function getProductById(id, fn) {
+    fn();
+};
+
 /**
  * Client#_request
  * Allows making HTTP requests to an API endpoint.

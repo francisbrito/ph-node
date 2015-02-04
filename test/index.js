@@ -105,7 +105,21 @@ describe('Client', function () {
     });
 
     describe('#getProductById', function () {
-        it('should throw if no product with id `id` is found.');
+        before(function () {
+            this.client = new Client('some api token', {
+                endpoint: LOCAL_TEST_SERVER
+            });
+        });
+
+        it('should throw if no product with id `id` is found.', function (next) {
+            this.client.getProductById('unexistent', function (err) {
+                (!!err).should.be.true;
+                err.message.should.eql('Could not find product with id "unexistent"');
+
+                next();
+            });
+        });
+
         it('should throw if no `id` field is provided.');
 
         it('should throw if API endpoint is not reachable.');
