@@ -90,7 +90,7 @@ Client.prototype._request = function _request(method, collection, body, query, f
     request(opts, function (err, res, body) {
         if (err) {
             // Endpoint was not reachable...
-            if (err.code === 'ENOTFOUND') {
+            if (err.code === 'ENOTFOUND' || err.code === 'ETIMEDOUT') {
                 err = new Error('Endpoint "' + client._endpoint + '" not reachable.');
             }
 
