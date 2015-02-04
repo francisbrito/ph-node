@@ -88,7 +88,20 @@ describe('Client', function () {
             });
         });
 
-        it('should throw if API endpoint responds with a server error.');
+        it('should throw if API endpoint responds with a server error.', function (next) {
+            var client = new Client('some api token', {
+                endpoint: 'http://localhost:3000/server-error'
+            });
+
+            client.getProducts(function (err, products) {
+                (err !== null).should.be.true;
+                err.message.should.eql('Server responded with an error.');
+                err.inner.should.eql('Cannot GET /server-error/1/products?');
+                
+                next();
+            });
+        });
+
         it('should throw if an unsupported status code is returned.');
     });
 
