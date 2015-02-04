@@ -101,8 +101,6 @@ describe('Client', function () {
                 next();
             });
         });
-
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#getProductById', function () {
@@ -111,13 +109,11 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#getPrintFiles', function () {
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#getPrintFileById', function () {
@@ -126,7 +122,6 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#createPrintFile', function () {
@@ -134,13 +129,11 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#getOrders', function () {
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#getOrderById', function () {
@@ -149,7 +142,6 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#createOrder', function () {
@@ -157,7 +149,6 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#updateOrder', function () {
@@ -168,7 +159,6 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 
     describe('#confirmOrder', function () {
@@ -178,7 +168,6 @@ describe('Client', function () {
 
         it('should throw if API endpoint is not reachable.');
         it('should throw if API endpoint responds with a server error.');
-        it('should throw if an unsupported status code is returned.');
     });
 });
 
