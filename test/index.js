@@ -64,7 +64,7 @@ describe('Client', function () {
                 try {
                     self.client.getProducts(function (err, products) {
                         products.should.be.ok.and.be.an.Array;
-                        
+
                         next();
                     });
                 } catch(err) {
@@ -98,7 +98,7 @@ describe('Client', function () {
                 (err !== null).should.be.true;
                 err.message.should.eql('Server responded with an error.');
                 err.inner.should.eql('Cannot GET /server-error/1/products?');
-                
+
                 next();
             });
         });
