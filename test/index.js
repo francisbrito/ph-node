@@ -44,6 +44,8 @@ describe('Client', function () {
             });
         });
 
+        it('should return a list of products.');
+
         it('should throw if API endpoint is not reachable.');
 
         it('should throw if API endpoint responds with a server error.');
