@@ -67,6 +67,7 @@ describe('Client', function () {
             });
         });
 
+        it('should return a product');
         it('should throw if no product with id `id` is found.');
         it('should throw if no `id` field is provided.');
     });

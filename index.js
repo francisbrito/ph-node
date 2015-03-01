@@ -90,12 +90,11 @@ Client.prototype._request = function _request(method, collection, body, query, f
             }
         };
 
-    var client = this;
     request(opts, function (err, res, body) {
         if (err) {
             // Endpoint was not reachable...
             if (err.code === 'ENOTFOUND' || err.code === 'ETIMEDOUT') {
-                err = new Error('Endpoint "' + client._endpoint + '" not reachable.');
+                err = new Error('Endpoint is not reachable.');
             }
 
             return fn(err);
@@ -105,7 +104,6 @@ Client.prototype._request = function _request(method, collection, body, query, f
             // NOTE: Error handling logic is bound to change once
             //       the production-ready API is deployed.
             err = new Error('Server responded with an error.');
-            err.inner = JSON.parse(body).err;
 
             return fn(err);
         }
