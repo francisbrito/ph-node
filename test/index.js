@@ -44,10 +44,6 @@ describe('Client', function () {
             });
         });
 
-        it('should filter products by `filter` parameter.');
-
-        it('should not require `filter` parameter.');
-
         it('should throw if API endpoint is not reachable.');
 
         it('should throw if API endpoint responds with a server error.');
