@@ -44,64 +44,13 @@ describe('Client', function () {
             });
         });
 
-        it('should filter products by `filter` parameter.', function (next) {
-            var filter = {
-                kind: 'Canvas'
-            };
+        it('should filter products by `filter` parameter.');
 
-            this.client.getProducts(filter, function (err, products) {
-                every(products, isACanvas).should.be.true;
+        it('should not require `filter` parameter.');
 
-                next();
-            });
-        });
+        it('should throw if API endpoint is not reachable.');
 
-        it('should not require `filter` parameter.', function (next) {
-            var self = this;
-
-            (function () {
-                // Note: try/catch is required so Mocha.js doesn't stop test execution upon receiving type error.
-                try {
-                    self.client.getProducts(function (err, products) {
-                        products.should.be.ok.and.be.an.Array;
-
-                        next();
-                    });
-                } catch(err) {
-                    throw err;
-                }
-            }).should.not.throw();
-        });
-
-        it('should throw if API endpoint is not reachable.', function (next) {
-            this.timeout(5 * 1000);
-
-            var client = new Client('some api token', {
-                endpoint: 'http://not-reachable:3001'
-            });
-
-
-            client.getProducts(function (err) {
-                err.should.be.ok;
-                err.message.should.eql('Endpoint "http://not-reachable:3001" not reachable.');
-
-                next();
-            });
-        });
-
-        it('should throw if API endpoint responds with a server error.', function (next) {
-            var client = new Client('some api token', {
-                endpoint: 'http://localhost:3000/server-error'
-            });
-
-            client.getProducts(function (err) {
-                (err !== null).should.be.true;
-                err.message.should.eql('Server responded with an error.');
-                err.inner.should.eql('Cannot GET /server-error/1/products?');
-
-                next();
-            });
-        });
+        it('should throw if API endpoint responds with a server error.');
     });
 
     describe('#getProductById', function () {
@@ -111,14 +60,7 @@ describe('Client', function () {
             });
         });
 
-        it('should throw if no product with id `id` is found.', function (next) {
-            this.client.getProductById('unexistent', function (err) {
-                (!!err).should.be.true;
-                err.message.should.eql('Could not find product with id "unexistent"');
-
-                next();
-            });
-        });
+        it('should throw if no product with id `id` is found.');
 
         it('should throw if no `id` field is provided.');
 
@@ -189,5 +131,5 @@ describe('Client', function () {
 /*
  * Helpers
  */
-function isACanvas(c) { return c.kind === 'Canvas'; }
-function every(array, predicate) { return array.every(predicate); }
+// function isACanvas(c) { return c.kind === 'Canvas'; }
+// function every(array, predicate) { return array.every(predicate); }
