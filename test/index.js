@@ -13,6 +13,8 @@ require('should');
 
 var Client = require('../').Client;
 
+var they = it.bind(it);
+
 var PH_TEST_SERVER = 'http://private-50d6dc-printhouse.apiary-mock.com/api';
 
 describe('Client', function () {
@@ -37,6 +39,11 @@ describe('Client', function () {
         });
     });
 
+    describe('methods', function () {
+        they('should throw if API endpoint is not reachable.');
+        they('should throw if API endpoint responds with a server error.');
+    });
+
     describe('#getProducts', function () {
         before(function () {
             this.client = new Client('some api token', {
@@ -51,10 +58,6 @@ describe('Client', function () {
                 next();
             });
         });
-
-        it('should throw if API endpoint is not reachable.');
-
-        it('should throw if API endpoint responds with a server error.');
     });
 
     describe('#getProductById', function () {
@@ -65,51 +68,29 @@ describe('Client', function () {
         });
 
         it('should throw if no product with id `id` is found.');
-
         it('should throw if no `id` field is provided.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
     });
 
-    describe('#getPrintFiles', function () {
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
-    });
+    describe('#getPrintFiles', function () {});
 
     describe('#getPrintFileById', function () {
         it('should throw if no print file with id `id` is found.');
         it('should throw if no `id` field is provided.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
     });
 
     describe('#createPrintFile', function () {
-        it('should throw if no `fields` parameter is provided.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
+        it('should throw if no `fields` parameter is provided.');        
     });
 
-    describe('#getOrders', function () {
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
-    });
+    describe('#getOrders', function () {});
 
     describe('#getOrderById', function () {
         it('should throw if no order with id `id` is found.');
         it('should throw if no `id` field is provided.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
     });
 
     describe('#createOrder', function () {
         it('should throw if no `fields` parameter is provided.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
     });
 
     describe('#updateOrder', function () {
@@ -117,18 +98,12 @@ describe('Client', function () {
         it('should throw if no `id` field is provided.');
         it('should throw if order has already being confirmed.');
         it('should throw if no `fields` parameter is provided.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
     });
 
     describe('#confirmOrder', function () {
         it('should throw if no order with id `id` is found.');
         it('should throw if no `id` field is provided.');
         it('should throw if order was already confirmed.');
-
-        it('should throw if API endpoint is not reachable.');
-        it('should throw if API endpoint responds with a server error.');
     });
 });
 
