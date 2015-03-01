@@ -13,7 +13,7 @@ require('should');
 
 var Client = require('../').Client;
 
-var LOCAL_TEST_SERVER = 'http://localhost:3000';
+var PH_TEST_SERVER = 'http://private-50d6dc-printhouse.apiary-mock.com/api';
 
 describe('Client', function () {
     describe('constructor', function () {
@@ -40,7 +40,7 @@ describe('Client', function () {
     describe('#getProducts', function () {
         before(function () {
             this.client = new Client('some api token', {
-                endpoint: LOCAL_TEST_SERVER
+                endpoint: PH_TEST_SERVER
             });
         });
 
@@ -107,7 +107,7 @@ describe('Client', function () {
     describe('#getProductById', function () {
         before(function () {
             this.client = new Client('some api token', {
-                endpoint: LOCAL_TEST_SERVER
+                endpoint: PH_TEST_SERVER
             });
         });
 
