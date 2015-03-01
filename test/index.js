@@ -44,7 +44,13 @@ describe('Client', function () {
             });
         });
 
-        it('should return a list of products.');
+        it('should return a list of products.', function (next) {
+            this.client.getProducts(function (err, products) {
+                products.should.be.ok.and.be.an.Array;
+
+                next();
+            });
+        });
 
         it('should throw if API endpoint is not reachable.');
 
