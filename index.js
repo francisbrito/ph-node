@@ -86,7 +86,7 @@ Client.prototype._request = function _request(method, collection, body, query, f
             url: url,
             method: method,
             headers: {
-                'X-API-Token': this._apiKey
+                'Authorization': 'Token token=' + this._apiKey
             }
         };
 
@@ -127,7 +127,7 @@ Client.prototype._request = function _request(method, collection, body, query, f
  * @private
  */
 Client.prototype._getApiUrlFor = function _getApiUrlFor(collection) {
-    return this._endpoint + '/' + this._version + '/' + collection;
+    return this._endpoint + '/' + 'v' + this._version + '/' + collection;
 };
 
 module.exports = {
