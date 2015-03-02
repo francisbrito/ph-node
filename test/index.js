@@ -96,7 +96,9 @@ describe('Client', function () {
         });
     });
 
-    describe('#getPrintFiles', function () {});
+    describe('#getPrintFiles', function () {
+        it('should return a list of print files.');
+    });
 
     describe('#getPrintFileById', function () {
         it('should throw if no print file with id `id` is found.');
