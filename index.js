@@ -84,15 +84,18 @@ Client.prototype._get = function _get(url, fn) {
  *
  * @private
  */
-Client.prototype._request = function _request(method, collection, body, query, fn) {
-    var url = this._getUrlFor(collection) + _toUrlQueryParams(query),
-        opts = {
-            url: url,
-            method: method,
-            headers: {
-                'Authorization': 'Token token=' + this._apiKey
-            }
-        };
+Client.prototype._request = function _request(method, url, body, query, fn) {
+    if (query) {
+        url += _toUrlQueryParams(query);
+    }
+
+    var opts = {
+        url: url,
+        method: method,
+        headers: {
+            'Authorization': 'Token token=' + this._apiKey
+        }
+    };
 
     request(opts, function (err, res, body) {
         if (err) {
