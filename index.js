@@ -81,7 +81,7 @@ Client.prototype.getProductById = function getProductById(id, fn) {
  * @private
  */
 Client.prototype._request = function _request(method, collection, body, query, fn) {
-    var url = this._getApiUrlFor(collection) + _toUrlQueryParams(query),
+    var url = this._getUrlFor(collection) + _toUrlQueryParams(query),
         opts = {
             url: url,
             method: method,
@@ -116,7 +116,7 @@ Client.prototype._request = function _request(method, collection, body, query, f
 };
 
 /**
- * Client#_getApiUrlFor
+ * Client#_getUrlFor
  * Returns an API endpoint given a collection name.
  *
  * @param {String} collection Name of the collection.
@@ -124,7 +124,7 @@ Client.prototype._request = function _request(method, collection, body, query, f
  *
  * @private
  */
-Client.prototype._getApiUrlFor = function _getApiUrlFor(collection) {
+Client.prototype._getUrlFor = function _getUrlFor(collection) {
     return this._endpoint + '/' + 'v' + this._version + '/' + collection;
 };
 
