@@ -131,7 +131,14 @@ describe('Client', function () {
         });
 
         it('should throw if no print file with id `id` is found.');
-        it('should throw if no `id` field is provided.');
+
+        it('should throw if no `id` field is provided.', function () {
+            var client = this.client;
+
+            (function () {
+                client.getPrintFileById();
+            }).should.throw('`id` is missing.');
+        });
     });
 
     describe('#createPrintFile', function () {
