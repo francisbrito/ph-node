@@ -65,6 +65,10 @@ Client.prototype.getProducts = function getProducts(filter, fn) {
 };
 
 Client.prototype.getProductById = function getProductById(id, fn) {
+    if (!id) {
+        throw new Error('`id` is missing.');
+    }
+
     this._get(this._getUrlFor('products') + '/' + id, fn);
 };
 
