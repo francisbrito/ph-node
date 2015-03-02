@@ -115,6 +115,7 @@ describe('Client', function () {
     });
 
     describe('#getPrintFileById', function () {
+        it('should return a print file.');
         it('should throw if no print file with id `id` is found.');
         it('should throw if no `id` field is provided.');
     });
