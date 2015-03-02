@@ -115,7 +115,21 @@ describe('Client', function () {
     });
 
     describe('#getPrintFileById', function () {
-        it('should return a print file.');
+        before(function () {
+            this.client = new Client('some api token', {
+                endpoint: PH_TEST_SERVER
+            });
+        });
+
+        it('should return a print file.', function (next) {
+            this.client.getPrintFileById('id', function (err, file) {
+                (!!file).should.be.ok;
+                file.should.be.an.Object;
+
+                next();
+            });
+        });
+
         it('should throw if no print file with id `id` is found.');
         it('should throw if no `id` field is provided.');
     });
