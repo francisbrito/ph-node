@@ -18,6 +18,8 @@ var they = it.bind(it);
 var PH_TEST_SERVER = 'http://private-50d6dc-printhouse.apiary-mock.com/api';
 
 describe('Client', function () {
+    this.timeout(5 * 1000);
+
     describe('constructor', function () {
         it('should throw if no API key is provided.', function () {
             (function () {
