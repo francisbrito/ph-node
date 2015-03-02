@@ -97,11 +97,19 @@ describe('Client', function () {
     });
 
     describe('#getPrintFiles', function () {
-        it('should return a list of print files.');
 
         before(function () {
             this.client = new Client('some api token', {
                 endpoint: PH_TEST_SERVER
+            });
+        });
+
+        it('should return a list of print files.', function (next) {
+            this.client.getPrintFiles(function (err, files) {
+                (!!files).should.be.ok;
+                files.should.be.an.Array;
+
+                next();
             });
         });
     });
