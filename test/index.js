@@ -77,7 +77,7 @@ describe('Client', function () {
             });
         });
 
-        it('should return an error if no product with id `id` is found.', function (next) {
+        it('should return an error if no product with id `id` is found.'/*, function (next) {
             // NOTE: This case cannot be tested with current mock server.
             this.client.getProductById('-1', function (err) {
                 (!!err).should.be.ok;
@@ -85,7 +85,7 @@ describe('Client', function () {
 
                 next();
             });
-        });
+        }*/);
         
         it('should throw if no `id` field is provided.', function () {
             var client = this.client;
