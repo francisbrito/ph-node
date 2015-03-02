@@ -98,6 +98,12 @@ describe('Client', function () {
 
     describe('#getPrintFiles', function () {
         it('should return a list of print files.');
+
+        before(function () {
+            this.client = new Client('some api token', {
+                endpoint: PH_TEST_SERVER
+            });
+        });
     });
 
     describe('#getPrintFileById', function () {
