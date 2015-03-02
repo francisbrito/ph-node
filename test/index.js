@@ -76,7 +76,6 @@ describe('Client', function () {
                 next();
             });
         });
-        it('should throw if no `id` field is provided.');
 
         it('should return an error if no product with id `id` is found.', function (next) {
             // NOTE: This case cannot be tested with current mock server.
@@ -86,6 +85,15 @@ describe('Client', function () {
 
                 next();
             });
+        });
+        
+        it('should throw if no `id` field is provided.', function () {
+            var client = this.client;
+
+            (function () {
+                client.getProductById(null);
+            }).should.throw('`id` is missing.');
+        });
     });
 
     describe('#getPrintFiles', function () {});
