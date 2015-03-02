@@ -77,6 +77,10 @@ Client.prototype.getPrintFiles = function getPrintFiles(fn) {
 };
 
 Client.prototype.getPrintFileById = function getPrintFileById(id, fn) {
+    if (!id) {
+        throw new MissingParameterError('id');
+    }
+
     this._get(this._getUrlFor('print_files') + '/' + id, fn);
 };
 
@@ -155,3 +159,11 @@ module.exports = {
 var _toUrlQueryParams = function _toUrlQueryParams(query) {
     return '?' + querystring.stringify(query);
 };
+
+var MissingParameterError = function MissingParameterError(param) {
+    Error.call(this);
+
+    this.message = '`' + param + '` is missing.';
+};
+
+MissingParameterError.prototype = new Error();
