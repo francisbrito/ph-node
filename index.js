@@ -61,7 +61,7 @@ Client.prototype.getProducts = function getProducts(filter, fn) {
         filter = null;
     }
 
-    this._request('get', 'products', null, filter, fn);
+    this._get(this._getUrlFor('products'), fn);
 };
 
 Client.prototype.getProductById = function getProductById(id, fn) {
