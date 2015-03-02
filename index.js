@@ -77,7 +77,7 @@ Client.prototype.getPrintFiles = function getPrintFiles(fn) {
 };
 
 Client.prototype.getPrintFileById = function getPrintFileById(id, fn) {
-    fn();
+    this._get(this._getUrlFor('print_files') + '/' + id, fn);
 };
 
 Client.prototype._get = function _get(url, fn) {
