@@ -76,8 +76,16 @@ describe('Client', function () {
                 next();
             });
         });
-        it('should throw if no product with id `id` is found.');
         it('should throw if no `id` field is provided.');
+
+        it('should return an error if no product with id `id` is found.', function (next) {
+            // NOTE: This case cannot be tested with current mock server.
+            this.client.getProductById('-1', function (err) {
+                (!!err).should.be.ok;
+                err.message.should.eql('Unable to find product with such id.');
+
+                next();
+            });
     });
 
     describe('#getPrintFiles', function () {});
