@@ -67,7 +67,13 @@ describe('Client', function () {
             });
         });
 
-        it('should return a product');
+        it('should return a product.', function (next) {
+            this.client.getProductById('id', function (err, product) {
+                (!!product).should.be.ok;
+
+                next();
+            });
+        });
         it('should throw if no product with id `id` is found.');
         it('should throw if no `id` field is provided.');
     });
