@@ -142,7 +142,11 @@ describe('Client', function () {
     });
 
     describe('#createPrintFile', function () {
-        it('should throw if no `fields` parameter is provided.');        
+        before(function () {
+            this.client = new Client('some api token', {
+                endpoint: PH_TEST_SERVER
+            });
+        });
     });
 
     describe('#getOrders', function () {});
