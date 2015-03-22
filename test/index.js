@@ -149,8 +149,10 @@ describe('Client', function () {
         });
 
         it('should throw if no `fields` parameter is provided.', function () {
+            var client = this.client;
+
             (function () {
-                this.client.createPrintFile(null, function () {});
+                client.createPrintFile(null, function () {});
             }).should.throw('`fields` is missing');
         });
     });
