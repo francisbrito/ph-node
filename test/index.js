@@ -153,7 +153,7 @@ describe('Client', function () {
 
             (function () {
                 client.createPrintFile(null, function () {});
-            }).should.throw('`fields` is missing');
+            }).should.throw('`fields` is missing.');
         });
     });
 
