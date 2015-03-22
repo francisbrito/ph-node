@@ -85,6 +85,10 @@ Client.prototype.getPrintFileById = function getPrintFileById(id, fn) {
 };
 
 Client.prototype.createPrintFile = function createPrintFile(fields, fn) {
+    if (!fields) {
+        throw new MissingParameterError('fields');
+    }
+
     fn();
 };
 
