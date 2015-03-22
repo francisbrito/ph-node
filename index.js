@@ -89,11 +89,15 @@ Client.prototype.createPrintFile = function createPrintFile(fields, fn) {
         throw new MissingParameterError('fields');
     }
 
-    fn();
+    this._post(this._getUrlFor('print_files'), fields, fn);
 };
 
 Client.prototype._get = function _get(url, fn) {
     this._request('get', url, null, null, fn);
+};
+
+Client.prototype._post = function _post(url, body, fn) {
+    this._request('post', url, body, null, fn);
 };
 
 /**
@@ -121,6 +125,11 @@ Client.prototype._request = function _request(method, url, body, query, fn) {
         }
     };
 
+    if (body) {
+        opts.json = true;
+        opts.body = body;
+    }
+
     request(opts, function (err, res, body) {
         if (err) {
             // Endpoint was not reachable...
@@ -140,7 +149,8 @@ Client.prototype._request = function _request(method, url, body, query, fn) {
         }
 
         // NOTE: This is a JSON API, so its safe to parse. For now.
-        var parsed = JSON.parse(body);
+        //       Except if content-type is set to JSON, as response is already parsed.
+        var parsed = opts.json ? body : JSON.parse(body);
 
         fn(null, parsed);
     });
