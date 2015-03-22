@@ -86,7 +86,7 @@ describe('Client', function () {
                 next();
             });
         }*/);
-        
+
         it('should throw if no `id` field is provided.', function () {
             var client = this.client;
 
@@ -147,6 +147,8 @@ describe('Client', function () {
                 endpoint: PH_TEST_SERVER
             });
         });
+
+        it('should throw if no `fields` parameter is provided.');
     });
 
     describe('#getOrders', function () {});
