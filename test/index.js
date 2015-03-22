@@ -148,7 +148,11 @@ describe('Client', function () {
             });
         });
 
-        it('should throw if no `fields` parameter is provided.');
+        it('should throw if no `fields` parameter is provided.', function () {
+            (function () {
+                this.client.createPrintFile(null, function () {});
+            }).should.throw('`fields` is missing');
+        });
     });
 
     describe('#getOrders', function () {});
