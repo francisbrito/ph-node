@@ -155,6 +155,22 @@ describe('Client', function () {
                 client.createPrintFile(null, function () {});
             }).should.throw('`fields` is missing.');
         });
+
+        it('should return created print file.', function (next) {
+            var fields = {
+                print_file: {
+                    product_id: 1,
+                    file_url: 'http://placehold.it/300'
+                }
+            };
+
+            this.client.createPrintFile(fields, function (err, file) {
+                (!!file).should.be.ok;
+                file.id.should.be.ok;
+
+                next();
+            });
+        });
     });
 
     describe('#getOrders', function () {});
