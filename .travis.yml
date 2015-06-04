@@ -3,4 +3,3 @@ node_js:
     - "iojs"
     - "stable"
     - "0.10"
-    - "0.8"
