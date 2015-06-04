@@ -1,4 +1,4 @@
-# PrintHouse API Client ![build status](https://travis-ci.org/francisbrito/ph-node.svg?branch=master)
+# PrintHouse API Client [![Build Status](https://travis-ci.org/francisbrito/ph-node.svg?branch=master)](https://travis-ci.org/francisbrito/ph-node)
 
 > A Node.js client for PrintHouse's RESTful API.
 
